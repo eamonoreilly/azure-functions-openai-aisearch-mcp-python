@@ -18,6 +18,16 @@ def ingest_data(req: func.HttpRequest, requests: func.Out[str]) -> func.HttpResp
     }
     return func.HttpResponse(json.dumps(response_json), status_code=200, mimetype="application/json")
 
+@app.function_name("Prompt")
+@app.route(methods=["POST"])
+@app.semantic_search_input(arg_name="result", connection_name="AZURE_AISEARCH_ENDPOINT", collection="openai-index", query="{question}", embeddings_model="%EMBEDDING_MODEL_DEPLOYMENT_NAME%", chat_model="%CHAT_MODEL_DEPLOYMENT_NAME%")
+def prompt(req: func.HttpRequest, result: str) -> func.HttpResponse:
+    result_json = json.loads(result)
+    response_json = {
+        "content": result_json.get("Response"),
+        "content_type": "text/plain"
+    }
+    return func.HttpResponse(json.dumps(response_json), status_code=200, mimetype="application/json")
 
 # This contains the input tool properties for the get_support_information MCP tool.
 tool_properties_get_support_json = json.dumps([
