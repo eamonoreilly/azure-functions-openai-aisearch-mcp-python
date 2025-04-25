@@ -1,0 +1,14 @@
+
+@host=http://localhost:7071
+
+### Import data in AI Search
+POST {{host}}/api/IngestData
+Content-Type: application/json
+
+{
+  "Text": "Contoso support incident 3455 is about slow performance.",
+  "Title": "Contoso3455"
+}
+
+# After importing data, you can ask the GitHub Copilot in Agent mode for information about this support incident.
+# Example: "What is support incident 3455 about?"
