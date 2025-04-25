@@ -40,7 +40,7 @@ Information about Model Context Protocol tools in Azure Functions is available o
 
 Once you have your Azure subscription, run the following in a new terminal window to create Azure OpenAI, Azure AI Search and other resources needed: You will be asked if you want to enable a virtual network that will lock down your OpenAI and AI Search services so they are only available from the deployed function app over private endpoints. To skip virtual network integration, select true. If you select networking, your local IP will be added to the OpenAI and AI Search services so you can debug locally.
 ```bash
-azd init --template https://github.com/Azure-Samples/azure-functions-openai-aisearch-python
+azd init --template https://github.com/eamonoreilly/azure-functions-openai-aisearch-mcp-python
 ```
 Make sure to run this before calling azd to provision resources so azd can run scripts required to setup permissions
 
